@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  HomeController();
+class InstructionsController extends GetxController {
+  InstructionsController();
 
   _initData() {
-    update(["home"]);
+    update(["instructions"]);
   }
 
   void onTap() {}
