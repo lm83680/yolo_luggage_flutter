@@ -8,7 +8,6 @@ import 'package:yolo_luggage/common/style/color.dart';
 
 class HomeController extends GetxController {
   HomeController();
-  int selectedHeight = 170;
   bool isDayUse = true; //日常模式
   bool showloading = false;
   _initData() async {
@@ -18,10 +17,6 @@ class HomeController extends GetxController {
     update(["home"]);
   }
 
-  void onChangeSelectedHeight(int value) {
-    selectedHeight = value;
-    update(["home"]);
-  }
 
   void onChangeModel() async {
     Get.back();
@@ -47,7 +42,7 @@ class HomeController extends GetxController {
         ),
         barrierDismissible: false);
     update(["home"]);
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(milliseconds: 500));
     Get.back();
     setShemeColor(!isDayUse);
     showloading = false;
