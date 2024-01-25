@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:yolo_luggage/common/style/color.dart';
 
@@ -10,8 +11,10 @@ class HomeController extends GetxController {
   int selectedHeight = 170;
   bool isDayUse = true; //日常模式
   bool showloading = false;
-  _initData() async{
-    isDayUse =  (await AdaptiveTheme.getThemeMode())==AdaptiveThemeMode.light ? true:false;
+  _initData() async {
+    isDayUse = (await AdaptiveTheme.getThemeMode()) == AdaptiveThemeMode.light
+        ? true
+        : false;
     update(["home"]);
   }
 
@@ -37,14 +40,22 @@ class HomeController extends GetxController {
               decoration: BoxDecoration(
                 color: Color.fromRGBO(255, 255, 255, 0.1),
               ),
-              child: CupertinoActivityIndicator(color: white,radius: 16,)),
+              child: CupertinoActivityIndicator(
+                color: white,
+                radius: 16,
+              )),
         ),
         barrierDismissible: false);
     update(["home"]);
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 1));
     Get.back();
+    setShemeColor(!isDayUse);
     showloading = false;
     update(["home"]);
+  }
+
+  void setShemeColor(bool isDark) {
+    SystemChrome.setSystemUIOverlayStyle(isDark?SystemUiOverlayStyle.light:SystemUiOverlayStyle.dark);
   }
 
   // @override
