@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:yolo_luggage/common/commpent/click.dart';
 import 'package:yolo_luggage/common/commpent/copyrigth.dart';
 import 'package:yolo_luggage/common/style/color.dart';
+import 'dart:ui' as ui;
 
 import 'index.dart';
 
@@ -98,7 +100,7 @@ class DayusemodelPage extends GetView<DayusemodelController> {
             SizedBox(width: 24),
             Expanded(
                 child: ClickAnimated(
-                    onClick: () {},
+                    onClick:  ()=>controller.getImage('frontView'),
                     child: Container(
                       width: double.infinity,
                       clipBehavior: Clip.hardEdge,
@@ -126,7 +128,7 @@ class DayusemodelPage extends GetView<DayusemodelController> {
         ),
         SizedBox(height: 24),
         ClickAnimated(
-            onClick: () {},
+            onClick: controller.start,
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 24),
               height: 40,
@@ -147,7 +149,7 @@ class DayusemodelPage extends GetView<DayusemodelController> {
             color: gray,
           ),
         ),
-        Column(
+        controller.resultData == null ? SizedBox() : Column(
           children: [
             ListTile(
               title: Row(
@@ -164,25 +166,13 @@ class DayusemodelPage extends GetView<DayusemodelController> {
               children: [
                 SizedBox(width: 24),
                 Expanded(
-                    child: Container(
-                  width: double.infinity,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      color: Color(0xaae8e8e8)),
-                  child: Image.asset('assets/images/sample1_add.png',
-                      fit: BoxFit.cover),
-                )),
+                  child: RadiusPicBox(Image.asset('assets/images/sample1.png',
+                      fit: BoxFit.cover)),
+                ),
                 SizedBox(width: 24),
                 Expanded(
-                    child: Container(
-                  width: double.infinity,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      color: Color(0xaae8e8e8)),
-                  child: Image.asset('assets/images/sample2_add.png',
-                      fit: BoxFit.cover),
+                    child: RadiusPicBox(Image.asset('assets/images/sample1.png',
+                      fit: BoxFit.cover)
                 )),
                 SizedBox(width: 24),
               ],
@@ -237,7 +227,6 @@ class DayusemodelPage extends GetView<DayusemodelController> {
     );
   }
 
-  
   Widget cannot() {
     return Icon(
       Icons.close_rounded,
@@ -250,6 +239,15 @@ class DayusemodelPage extends GetView<DayusemodelController> {
       Icons.done_rounded,
       color: green,
     );
+  }
+
+  Widget RadiusPicBox(Widget child) {
+    return Container(
+        width: double.infinity,
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24), color: Color(0xaae8e8e8)),
+        child: child);
   }
 
   @override
