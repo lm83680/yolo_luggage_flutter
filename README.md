@@ -1,8 +1,7 @@
 # yolo_luggage
 
-Graduation project companion software for an oversized luggage intelligent recognition system based on the YOLO algorithm. From Qin ChangTeng
-
-基于YOLO算法的超大行李箱智能识别系统毕业设计配套软件。——覃昌腾
+Graduation project companion software for an oversized luggage intelligent recognition system based on the YOLO algorithm
+基于YOLO算法的超大行李箱智能识别系统毕业设计配套软件
 
 create time : January 24, 2024 at 00:26 / 2024年1月24日00点26分
 
